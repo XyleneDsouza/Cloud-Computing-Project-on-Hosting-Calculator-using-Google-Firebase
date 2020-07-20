@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Age Calculator</title>
+<a href="index.html"></a>
+
+<style>
+body {
+	background-color: lightblue;
+    color: black;
+ text-align: center;
+font-size: 25px;
+    
+}
+
+input[type=submit] {
+  width: 70%;  font-size:20px;
+  padding: 8 8 20px 0px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  background-color: lightblue;
+  color: black;
+  border: 7px solid #111;
+  box-shadow:inset 0 0 13px #888;
+  border-radius: 15px;
+  cursor: pointer;
+}
+input[type=submit]:hover {background-color: green}
+h1{
+    color: green;
+     text-align: center;
+}
+br{
+color: #008CBA;
+padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+}
+.btn{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 25px;
+    
+}
+.btn:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+}
+
+</style>
+
+<script>
+function ageCalculate(){
+    //document.getElementById('age').InnerHtml
+  // document.getElementById("demo").InnerHtml=4+5;
+   //document.write="Hi";
+   var birthDate =document.getElementById('birth_date').value;
+
+//if(birthDate==""){
+  //  alert("Choose correct birthdate.")
+//}else{
+  //  alert(birthDate);
+  //  alert(Date());
+    var d = new Date(birthDate);
+
+   // document.getElementById("age").innerHTML = d;
+
+//}
+
+        var mdate = birthDate.toString();
+        var yearThen = parseInt(mdate.substring(0,4), 10);
+        var monthThen = parseInt(mdate.substring(5,7), 10);
+        var dayThen = parseInt(mdate.substring(8,10), 10);
+        
+        var today = new Date();
+        var birthday = new Date(yearThen, monthThen-1, dayThen);
+     //   alert(today.valueOf() + " " + birthday.valueOf());
+        var differenceInMilisecond = today.valueOf() - birthday.valueOf();
+      //  alert(differenceInMilisecond);
+        
+        var year_age = Math.floor(differenceInMilisecond / 31536000000);
+        var day_age = Math.floor((differenceInMilisecond % 31536000000) / 86400000);
+        
+        if ((today.getMonth() == birthday.getMonth()) && (today.getDate() == birthday.getDate())) {
+            alert("Happy B'day!!!");
+        }
+        
+        var month_age = Math.floor(day_age/30);
+        
+        day_age = day_age % 30;
+        
+        var tMnt= (month_age + (year_age*12));
+        var tDays =(tMnt*30) + day_age;
+        
+        if (isNaN(year_age) || isNaN(month_age) || isNaN(day_age)) {
+            document.getElementById("age").innerHTML = ("Invalid birthday - Please try again!");
+        }
+        else {
+            document.getElementById("age").innerHTML = year_age + " years " + month_age + " months " + day_age + " days"
+            + "<br/> or <br/> " 
+            + tMnt + " months " + day_age + " days" 
+            + "<br/> or <br/>" 
+            +  tDays + " days" 
+            + "<br/> or <br/>" 
+            +  tDays*24 + " hours" 
+            + "<br/> or <br/>" 
+            +  tDays*24*3600 + " seconds" 
+            + "<br/> or <br/>" 
+            +  tDays*24*3600*1000 + " miliseconds" ;
+        }
+}
+</script>
+</head>
+
+	<body>
+	    <h1><center>Age Calculator</cenrter></h1>
+		Date Of Birth: 
+		<input type="date" id="birth_date">
+		<input class="btn" type="button" value="Calculate Age" onclick="ageCalculate()">
+        <br/><br/>
+        Age: 
+        <br/>
+        <br/>
+        <div id="age"></div>
+        
+<p id="demo"></p>
+<form action="index.html">
+  <input type="submit" value="BACK">
+</form></div></div>
+
+	</body>
+</html>

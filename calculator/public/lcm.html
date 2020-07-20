@@ -1,0 +1,138 @@
+<html>
+<head>
+<title>LCM GCF Calculator</title>
+
+<script type="text/javascript">
+<!-- This script and many more are available free online at -->
+<!-- The JavaScript Source!! http://javascript.internet.com -->
+<!-- Original: Seamus Yim -->
+
+
+
+<!-- Begin
+function go(input1,input2,input3){
+if (document.form1.text3.value!=""){
+document.form1.answer.value=hcf(hcf(input1,input2),input3);
+document.form1.answer2.value=lcm(lcm(input1,input2),input3);
+} else {
+document.form1.answer.value=hcf(input1,input2);
+document.form1.answer2.value=lcm(input1,input2);
+}
+}
+
+function hcf(text1,text2){
+var gcd=1;
+if (text1>text2) {text1=text1+text2; text2=text1-text2; text1=text1-text2;}
+if ((text2==(Math.round(text2/text1))*text1)) {gcd=text1}else {
+for (var i = Math.round(text1/2) ; i > 1; i=i-1) {
+if ((text1==(Math.round(text1/i))*i))
+if ((text2==(Math.round(text2/i))*i)) {gcd=i; i=-1;}
+}
+}
+return gcd;
+}
+
+function lcm(t1,t2){
+var cm=1;
+var f=hcf(t1,t2);
+cm=t1*t2/f;
+return cm;
+}
+//  End -->
+</script>
+
+<style>
+.center {
+background-color: lightblue;
+font-family:'Arial';
+font-weight:bold;
+color:black;
+padding:0.5em;
+border-style:solid;
+border-width: 1px;
+border-color: transparent transparent rgba(0,0,0,0.4) transparent;
+font-size:22px;
+}
+input[type="text"], textarea {
+
+border-color:transparent transparent rgba(0, 0, 0, 0.4);
+background-repeat: no-repeat;
+border-style:solid;
+border-width:1px;
+color:black;
+font-family:'Arial';
+font-size:22px;
+font-weight:bold;
+padding:0.5em;
+width:500px;
+}
+
+input[type=submit] {
+  width: 100%;  font-size:20px;
+  padding: 8 8 20px 0px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  background-color: lightblue;
+  color: black;
+  border: 7px solid #111;
+  box-shadow:inset 0 0 13px #888;
+  border-radius: 15px;
+  cursor: pointer;
+}
+input[type=submit]:hover {background-color: green}
+p {
+background-color:#000000;
+text-align: center;
+color: red;
+font-size:22px,
+font-weight:400;
+}
+
+input.GREEN {
+background-color:LimeGreen;
+color:#FFFFFF;
+font-size:30px;
+width:200px;
+height:50px;
+}
+input.RED {
+background-color:Red;
+color:#FFFFFF;
+font-size:30px;
+width:300px;
+height:50px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="center">
+<h1><center>LCM GCF Calculator</center></h1>	
+<br><br>     
+<div align="center">
+<form name="form1">
+First Number:  <input type="text" name="text1" size="3">
+<br><br>
+Second Number:  <input type="text" name="text2" size="3">
+<br><br>
+Third Number (<em>not required</em>):  <input type="text" name="text3" size="3">
+<br><br>
+<input type="reset" value="Reset" class="GREEN" />
+<input type="button" value="Find GCF and LCM" onclick="go(eval(document.form1.text1.value),eval(document.form1.text2.value),eval(document.form1.text3.value))"class="RED" />
+<br><br>
+Greatest Common Factor (GCF):   <input type="text" name="answer" size="3" readonly="">
+<br><br>
+Least Common Multiplier (LCM):   <input type="text" name="answer2" size="3" readonly="">
+
+</form>
+</div>
+</div> 
+   <form action="index.html">
+  <input type="submit" value="BACK">
+</form></div></div>
+    
+</body>
+</html>

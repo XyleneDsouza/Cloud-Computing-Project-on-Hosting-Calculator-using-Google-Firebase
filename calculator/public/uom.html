@@ -1,0 +1,268 @@
+<html>
+<head>
+  <title>Unit Converter</title>
+<a href="index.html"></a>
+<style>
+h6 {text-align: center; color:black; font-size: 50px;}
+#outer{width:1320px; height: 1000px;background:#ccc;background-color: white; text-align:center;overflow-x:hidden}
+#cover{height: 600px;border:7px solid #111;background-color: lightblue; border-radius:9px;box-shadow:inset 0 0 13px #888;padding: 0px 0px 0px 0px}
+.main{table-layout:fixed;width:100%}
+.main td{font-weight:bold;font-size:20px;padding:4 10px;vertical-align:middle;text-align:center;width:100%;border:0}
+ul{padding:0 0 px 5px;list-style:none}
+li{line-height:16px}
+.main input,select{font-weight:bold;font-size:15px;width:100%;border:5px solid #ccc;margin:6px 0;padding:2px;text-align:left;}
+input.output{font-weight:bold;font-size:22px;padding:5px 0;border:10;text-align:center}
+#t1{width:100%;}
+#t2,#t3,#t4,#t5,#t6{display:none;width:100%;}
+
+input[type=submit] {
+  width: 100%;  font-size:20px;
+  padding: 8 8 20px 0px;
+  margin: 10px 0;
+  box-sizing: border-box;
+  background-color: lightblue;
+  color: black;
+  border: 7px solid #111;
+  box-shadow:inset 0 0 13px #888;
+  border-radius: 15px;
+  cursor: pointer;
+}
+input[type=submit]:hover {background-color: green}
+
+</style>
+
+<script>
+function gid(){var elements=new Array();for (var i=0;i < arguments.length;i++) {var element=arguments[i];
+	if(typeof element=='string') element=document.getElementById(element);if(arguments.length==1) return element; elements.push(element);} return elements;}
+function hi(){gid('t1').style.display="none";gid('t2').style.display="none";gid('t3').style.display="none";gid('t4').style.display="none";gid('t5').style.display="none";gid('t6').style.display="none";}
+function uc1(){gid('t1').style.display="block";}
+function uc2(){gid('t2').style.display="block"}
+function uc3(){gid('t3').style.display="block";}
+function uc4(){gid('t4').style.display="block";}
+function uc5(){gid('t5').style.display="block";}
+function uc6(){gid('t6').style.display="block";}
+function len(){
+var from=gid('flength').value;
+var to=gid('tlength').value;
+var totext = gid('tlength').options[gid('tlength').selectedIndex].text;
+var ip=gid('lip').value;
+if(gid('lip').value==null||gid('lip').value.length==0)gid('lop').value='{$eunit}';
+else
+gid('lop').value=Math.round(ip*from/to*100000)/100000+ ' ' +totext ;}
+function area(){
+var from=gid('farea').value;
+var to=gid('tarea').value;
+var totext = gid('tarea').options[gid('tarea').selectedIndex].text;
+ip=gid('aip').value;
+if(gid('aip').value==null||gid('aip').value.length==0)gid('aop').value='{$eunit}';
+else
+gid('aop').value=Math.round(ip*from/to*100000)/100000+ ' ' +totext ;}
+function speed(){
+var from=gid('fspeed').value;
+var to=gid('tspeed').value;
+var totext = gid('tspeed').options[gid('tspeed').selectedIndex].text;
+var ip=gid('sip').value;
+if(gid('sip').value==null||gid('sip').value.length==0)gid('sop').value='{$eunit}';
+else
+gid('sop').value=Math.round(ip*from/to*100000)/100000+ ' ' +totext ;}
+function weight(){
+var from=gid('fweight').value;
+var to=gid('tweight').value;
+var ip=gid('wip').value;
+var totext = gid('tweight').options[gid('tweight').selectedIndex].text;
+if(gid('wip').value==null||gid('wip').value.length==0)gid('wop').value='{$eunit}';
+else
+gid('wop').value=Math.round(ip*from/to*100000)/100000+ ' ' +totext ;}
+function vol(){
+var from=gid('fvol').value;
+var to=gid('tvol').value;
+var ip=gid('vip').value;
+var totext = gid('tvol').options[gid('tvol').selectedIndex].text;
+if(gid('vip').value==null||gid('vip').value.length==0)gid('vop').value='{$eunit}';
+else
+gid('vop').value=Math.round(ip*from/to*100000)/100000+ ' ' +totext ;}
+function temp(){
+var from=gid('ftemp').value;
+var to=gid('ttemp').value;
+var ip=gid('tip').value;
+var totext = gid('ttemp').options[gid('ttemp').selectedIndex].text;
+if(gid('tip').value==null||gid('tip').value.length==0)gid('top1').value='{$eunit}';
+ else 
+ 	if(from==1 &&to==1)
+	gid('top1').value=ip+ ' ' +totext ;
+if(from==1&&to==2)
+	gid('top1').value=((ip*9/5)+32*1).toFixed(2)+ ' ' +totext ;
+if(from==1&&to==3)
+	gid('top1').value=(ip*1+273.15*1).toFixed(2)+ ' ' +totext ;
+if(from==2&&to==1)
+	gid('top1').value=((ip-32)*5/9).toFixed(2)+ ' ' +totext ;
+if(from==2&&to==2)
+	gid('top1').value=ip+ ' ' +totext ;
+if(from==2&&to==3)
+	gid('top1').value=(((ip-32)*5/9)+273.15).toFixed(2)+ ' ' +totext ;
+if(from==3&&to==1)
+	gid('top1').value=(ip-273.15).toFixed(2)+ ' ' +totext ;
+if(from==3&&to==2)
+	gid('top1').value=((ip-273.15)*9/5 +32*1).toFixed(2)+ ' ' +totext ;
+if(from==3&&to==3)
+	gid('top1').value=ip+ ' ' +totext ;}
+function selunit(){
+if(gid('ut').value=='1'){hi();uc1();len();};if(gid('ut').value=='2'){hi();uc2();area();};if(gid('ut').value=='3'){hi();uc3();speed();};if(gid('ut').value=='4'){hi();uc4();weight();};if(gid('ut').value=='5'){hi();uc5();vol();};if(gid('ut').value=='6'){hi();uc6();temp();};}
+window.onload=function(){hi();uc1();len();}
+</script>  
+
+</head>
+
+<body>  
+<div id=outer>
+<div id=cover>
+<form name=uc>
+
+<table class=main>
+<h6>Unit Converter</h6>
+<tr>
+	<tr>
+		<td>Unit Type</td>
+		<td>
+			<select id='ut' onchange=selunit();>
+				<option value='1'>Length
+				<option value='2'>Area
+				<option value='3'>Speed
+				<option value='4'>Weight
+				<option value='5'>Volume
+				<option value='6'>Temperature
+			</select>
+		</td>
+	</tr>
+</tr></table>
+<div id=t1><table class=main><tr><td>No. of units<td>
+<input id=lip value=1 onchange=len();><tr>
+<td>Convert from<td><select id=flength onchange=len();>
+<option value=1>Millimeters
+<option value=10>Centimeters
+<option value=1000 selected>Meters
+<option value=1000000>Kilometers
+<option value=25.4>Inches
+<option value=304.8>Feet
+<option value=914.4>Yards
+<option value=1609344>Miles
+<option value=1852000>Nautical Miles
+<option value=1701.8>Smoots</select><tr><td>Convert to<td><select id=tlength onchange=len();>
+<option value=1>Millimeters
+<option value=10>Centimeters
+<option value=1000>Meters
+<option value=1000000>Kilometers
+<option value=25.4>Inches
+<option value=304.8>Feet
+<option value=914.4 selected>Yards
+<option value=1609344>Miles
+<option value=1852000>Nautical Miles
+<option value=1701.8>Smoots</select>
+<tr><td colspan=2><input class=output id=lop></table></div>
+<div id=t2><table class=main><tr><td>No. of units<td><input id=aip value=1 onchange=area();><tr>
+<td>Convert from<td><select id=farea onchange=area();>
+<option value=.01>Sq. Millimeter
+<option value=1>Sq. Centimeters
+<option value=10000 selected>Sq. Meters
+<option value=10000000000>Sq. Kilometers
+<option value=6.4516>Sq. Inches
+<option value=929.0304>Sq. Feet
+<option value=8361.2736>Sq. Yards
+<option value=25899881103.36>Sq. Miles
+<option value=100000000>Hectares
+<option value=40468564>Acres</select><tr><td>Convert to<td><select id=tarea onchange=area();>
+<option value=.01>Sq. Millimeter
+<option value=1>Sq. Centimeters
+<option value=10000>Sq. Meters
+<option value=10000000000>Sq. Kilometers
+<option value=6.4516>Sq. Inches
+<option value=929.0304>Sq. Feet
+<option value=8361.2736 selected>Sq. Yards
+<option value=25899881103.36>Sq. Miles
+<option value=100000000>Hectares
+<option value=40468564>Acres</select><tr><td colspan=2><input class=output id=aop></table></div>
+<div id=t3><table class=main><tr><td>No. of units<td><input id=sip value=1 onchange=speed();><tr><td>Convert from<td><select id=fspeed onchange=speed();>
+<option value=0.1>Millimeters /Sec
+<option value=1>Centimeters /Sec
+<option value=100>Meters /Sec
+<option value=100000>Kilometers /Sec
+<option value=27.77778 selected>Kilometers /Hour
+<option value=2.54>Inches /Sec
+<option value=30.48>Feet /Sec
+<option value=91.44>Yards /Sec
+<option value=160934.4>Miles /Sec
+<option value=44.704>Miles /Hour
+<option value=51.4443>Knots</select><tr><td>Convert to<td><select id=tspeed onchange=speed();><option value=0.1>Millimeters /Sec
+<option value=1>Centimeters /Sec
+<option value=100 selected>Meters /Sec
+<option value=100000>Kilometers /Sec
+<option value=27.77778>Kilometers /Hour
+<option value=2.54>Inches /Sec
+<option value=30.48>Feet /Sec
+<option value=91.44>Yards /Sec
+<option value=160934.4>Miles /Sec
+<option value=44.704>Miles /Hour
+<option value=51.4443>Knots</select><tr><td colspan=2><input class=output id=sop></table></div>
+<div id=t4><table class=main><tr><td>No. of units<td><input id=wip value=1 onchange=weight();><tr><td>Convert from<td><select id=fweight onchange=weight();>
+<option value=1>Grams
+<option value=1000 selected>Kilograms
+<option value=100000>Quintals
+<option value=1000000>Tonnes
+<option value=11.66381>Tolas (India)
+<option value=28.34952>Ounces
+<option value=453.59237>Pounds
+<option value=907184.74>Short Tons (US)
+<option value=1016047>Long Tons (UK)</select><tr><td>Convert to<td><select id=tweight onchange=weight();>
+<option value=1>Grams
+<option value=1000>Kilograms
+<option value=100000>Quintals
+<option value=1000000 selected>Tonnes
+<option value=11.66381>Tolas (India)
+<option value=28.34952>Ounces
+<option value=453.59237>Pounds
+<option value=907184.74>Short Tons (US)
+<option value=1016047>Long Tons (UK)</select><tr><td colspan=2><input class=output id=wop></table></div>
+<div id=t5><table class=main><tr><td>No. of units<td><input id=vip value=1 onchange=vol();><tr><td>Convert from<td><select id=fvol onchange=vol();>
+<option value=1>Millilitres
+<option value=1000 selected>Litres
+<option value=1000000>Cubic Meters
+<option value=16.38706>Cubic Inches
+<option value=28316.85>Cubic Feet
+<option value=764555.858>Cubic Yards
+<option value=29.5735>Ounces
+<option value=3785.41>Gallons
+<option value=473.17625>Pints
+<option value=946.3525>Quarts
+<option value=14.78676>Tablespoons
+<option value=4.92892>Teaspoons</select><tr><td>Convert to<td><select id=tvol onchange=vol();>
+<option value=1>Millilitres
+<option value=1000>Litres
+<option value=1000000>Cubic Meters
+<option value=16.38706>Cubic Inches
+<option value=28316.85 selected>Cubic Feet
+<option value=764555.858>Cubic Yards
+<option value=29.5735>Ounces
+<option value=3785.41>Gallons
+<option value=473.17625>Pints
+<option value=946.3525>Quarts
+<option value=14.78676>Tablespoons
+<option value=4.92892>Teaspoons</select>
+<tr><td colspan=2><input class=output id=vop></table></div>
+<div id=t6><table class=main><tr><td>Temperature<td><input id=tip value=1 onchange=temp();><tr><td>Convert from<td><select id=ftemp onchange=temp();>
+<option value=1 selected>Deg. Celsius
+<option value=2>Deg. Fahrenheit
+<option value=3>Kelvin</select>
+<tr><td>Convert to<td><select id=ttemp onchange=temp();>
+<option value=1>Deg. Celsius
+<option value=2 selected>Deg. Fahrenheit
+<option value=3>Kelvin</select>
+<tr><td colspan=2><input class=output id=top1></table></div></form>
+
+<form action="index.html">
+  <input type="submit" value="BACK">
+</form></div></div>
+
+
+</body>
+
+</html>
