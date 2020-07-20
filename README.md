@@ -68,5 +68,6 @@ firebase deploy
 
 This command deploys a release to your Firebase project's default Hosting sites: 
 
-projectID.web.app 
+projectID.web.app
+
 projectID.firebaseapp.com 
